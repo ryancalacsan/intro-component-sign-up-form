@@ -1,0 +1,74 @@
+@use "../abstracts" as *;
+
+.trial {
+    margin-bottom: 68px;
+    &__header {
+        color: $white;
+        font-size: 15px;
+        font-weight: $regular;
+        letter-spacing: 0.27px;
+        padding: 18px 66px;
+        background-color: $blue;
+        border-radius: 10px;
+        margin-bottom: 24px;
+        box-shadow: 0px 8px 0px 0px hsla(0, 0%, 0%, 0.147);
+
+        span {
+            font-weight: $bold;
+        }
+    }
+
+    &__form {
+        background-color: $white;
+        padding: 24px;
+        border-radius: 10px;
+        box-shadow: 0px 8px 0px 0px hsla(0, 0%, 0%, 0.147);
+    }
+
+    &__input {
+        width: 100%;
+        font-size: $font-xs;
+        font-weight: $semi-bold;
+        line-height: 26px;
+        letter-spacing: 0.25px;
+        padding: 14px 0px 14px 19.41px;
+        border: 1px solid $light-gray;
+        border-radius: 5px;
+        margin-bottom: 16px;
+
+        &::placeholder {
+            color: $dark-blue;
+            opacity: 75%;
+        }
+    }
+
+    &__btn {
+        color: $white;
+        font-size: $font-sm;
+        font-weight: $semi-bold;
+        line-height: 26px;
+        text-transform: uppercase;
+        background-color: $green;
+        border: none;
+        padding: 15px 44px;
+        border-radius: 5px;
+        box-shadow: inset 0px -4px 0px 0px hsla(0, 0%, 0%, 9.09%);
+        margin-bottom: 8px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__terms {
+        color: $grayish-blue;
+        font-size: $font-xxs;
+        line-height: 21px;
+        padding: 0 15px;
+    }
+}
+
+//temp hide for error views
+.trial__err {
+    display: none;
+}

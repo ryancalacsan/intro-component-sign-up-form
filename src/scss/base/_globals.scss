@@ -1,0 +1,40 @@
+@use "../abstracts" as *;
+
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: $font-md;
+    font-weight: $medium;
+    background-color: $red;
+    background-image: url(../images/bg-intro-mobile.png);
+    padding: 88px 24px 68px 24px;
+    text-align: center;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: $red;
+    font-weight: $bold;
+}

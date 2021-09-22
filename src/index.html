@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./scss/main.scss" />
+    <title>Intro Component Sign Up</title>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <h1 class="hero__title">Learn to code by watching others</h1>
+        <p class="hero__text">
+          See how experienced developers solve problems in real-time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+        </p>
+      </section>
+      <section class="trial">
+        <h2 class="trial__header">
+          <span class="bold">Try it free 7 days</span> then $20/mo. thereafter
+        </h2>
+        <form class="trial__form" novalidate>
+          <input
+            class="trial__input"
+            type="text"
+            name="firstName"
+            id="firstName"
+            placeholder="First Name"
+            required
+          />
+          <p class="trial__err trial_err-firstName">
+            First Name cannot be empty
+          </p>
+          <input
+            class="trial__input"
+            type="text"
+            name="lastName"
+            id="lastName"
+            placeholder="Last Name"
+            required
+          />
+          <p class="trial__err trial_err-lastName">Last Name cannot be empty</p>
+          <input
+            class="trial__input"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email Address"
+            required
+          />
+          <p class="trial__err trial_err-email">
+            Looks like this is not an email
+          </p>
+          <input
+            class="trial__input"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <p class="trial__err trial__err-password">Password cannot be empty</p>
+          <button class="trial__btn" type="submit">
+            Claim your free trial
+          </button>
+          <p class="trial__terms">
+            By clicking the button, you are agreeing to our
+            <a href="/" class="trial__terms-link">Terms and Services</a>
+          </p>
+        </form>
+      </section>
+    </main>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
