@@ -492,6 +492,10 @@ main {
 .trial__input:focus, .trial__input:focus-visible {
   border: 1px solid #6055a5;
 }
+.trial__input-err {
+  border: 2px solid #ff7a7a;
+  padding: 13px 0px 13px 19.41px;
+}
 .trial input:not(:first-of-type) {
   margin-top: 16px;
 }
@@ -514,6 +518,7 @@ main {
   box-shadow: inset 0px -4px 0px 0px rgba(0, 0, 0, 0.0909);
   margin-bottom: 8px;
   margin-top: 16px;
+  transition: background-color 150ms ease-in-out;
 }
 @media (min-width: 64em) {
   .trial__btn {
@@ -522,6 +527,7 @@ main {
 }
 .trial__btn:hover {
   cursor: pointer;
+  background-color: #78e2b4;
 }
 .trial__terms {
   color: #b9b6d3;
@@ -536,6 +542,7 @@ main {
 }
 
 .trial__err {
+  display: none;
   color: #ff7a7a;
   font-size: 11px;
   width: 100%;
@@ -544,6 +551,10 @@ main {
   margin-top: 6px;
   margin-bottom: -1px;
   font-style: italic;
+}
+
+.show {
+  display: block;
 }
 
 /*# sourceMappingURL=/main.77bb5cfd.css.map */
