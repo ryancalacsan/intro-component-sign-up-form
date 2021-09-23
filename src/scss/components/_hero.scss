@@ -4,15 +4,30 @@
     color: $white;
     margin-bottom: 64px;
 
+    @include breakpoint-up(large) {
+        margin: 0;
+        text-align: left;
+        max-width: 525px;
+        padding-right: 24px;
+    }
+
     &__title {
         font-size: $font-lg;
         font-weight: $bold;
         line-height: 36px;
         letter-spacing: -0.29px;
         margin-bottom: 16px;
+
+        @include breakpoint-up(large) {
+            font-size: $font-xl;
+            line-height: 55px;
+            letter-spacing: -0.52px;
+            margin-bottom: 32px;
+        }
     }
 
     &__text {
         line-height: 26px;
+        font-weight: $regular;
     }
 }

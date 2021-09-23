@@ -1,0 +1,16 @@
+@use "../abstracts" as *;
+
+main {
+    min-width: 282px;
+    max-width: 642px;
+    margin: 0 auto;
+    width: 100%;
+
+    @include breakpoint-up(large) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1110px;
+        margin: 0;
+    }
+}

@@ -24,6 +24,12 @@ body {
     background-image: url(../images/bg-intro-mobile.png);
     padding: 88px 24px 68px 24px;
     text-align: center;
+
+    @include breakpoint-up(large) {
+        background-image: url(../images/bg-intro-desktop.png);
+        display: flex;
+        justify-content: center;
+    }
 }
 
 h1,
@@ -37,4 +43,8 @@ a {
     text-decoration: none;
     color: $red;
     font-weight: $bold;
+}
+
+input {
+    outline: none;
 }
