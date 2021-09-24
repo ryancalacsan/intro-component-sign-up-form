@@ -357,13 +357,12 @@ body {
   font-size: 16px;
   font-weight: 500;
   background-color: #ff7a7a;
-  background-image: url(/bg-intro-mobile.6030d29e.png);
+  background-image: url(/bg-intro-desktop-copy.0d3234a0.png);
   padding: 88px 24px 68px 24px;
   text-align: center;
 }
 @media (min-width: 64em) {
   body {
-    background-image: url(/bg-intro-desktop.62667658.png);
     display: flex;
     justify-content: center;
   }

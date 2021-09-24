@@ -21,12 +21,12 @@ body {
     font-size: $font-md;
     font-weight: $medium;
     background-color: $red;
-    background-image: url(../images/bg-intro-mobile.png);
+    background-image: url(../images/bg-intro-desktop-copy.png);
+
     padding: 88px 24px 68px 24px;
     text-align: center;
 
     @include breakpoint-up(large) {
-        background-image: url(../images/bg-intro-desktop.png);
         display: flex;
         justify-content: center;
     }
