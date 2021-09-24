@@ -118,43 +118,175 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/script.js":[function(require,module,exports) {
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
+var firstNameInput = document.querySelector('#firstName');
+var lastNameInput = document.querySelector('#lastName');
+var emailInput = document.querySelector('#email');
+var passwordInput = document.querySelector('#password');
 var form = document.querySelector('.trial__form');
-var inputs = document.querySelectorAll('.trial__input');
-var email = document.querySelector('#email');
-var errors = document.querySelectorAll('.trial_err');
+
+var isRequired = function isRequired(value) {
+  return value === '' ? false : true;
+};
+
+var isEmailValid = function isEmailValid(email) {
+  var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(email);
+};
+
+var checkFirstName = function checkFirstName() {
+  var valid = false;
+  var firstName = firstNameInput.value.trim();
+
+  if (!isRequired(firstName)) {
+    showError(firstNameInput, 'First Name canot be empty');
+  } else {
+    showSuccess(firstNameInput);
+    valid = true;
+  }
+
+  return valid;
+};
+
+var checkLastName = function checkLastName() {
+  var valid = false;
+  var lastName = lastNameInput.value.trim();
+
+  if (!isRequired(lastName)) {
+    showError(lastNameInput, 'First Name canot be empty');
+  } else {
+    showSuccess(lastNameInput);
+    valid = true;
+  }
+
+  return valid;
+};
+
+var checkEmail = function checkEmail() {
+  var valid = false;
+  var email = emailInput.value.trim();
+
+  if (!isRequired(email)) {
+    showError(emailInput, 'Email cannot be empty');
+  } else if (!isEmailValid(email)) {
+    showError(emailInput, 'Email is not valid');
+  } else {
+    showSuccess(emailInput);
+    valid = true;
+  }
+
+  return valid;
+};
+
+var checkPassword = function checkPassword() {
+  var valid = false;
+  var password = passwordInput.value.trim();
+
+  if (!isRequired(password)) {
+    showError(passwordInput, 'Password cannot be empty');
+  } else if (!isPasswordSecure(password)) {
+    showError(passwordInput, 'Password must have at least 8 characters that include 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)');
+  } else {
+    showSuccess(passwordInput);
+    valid = true;
+  }
+
+  return valid;
+};
+
+var isPasswordSecure = function isPasswordSecure(password) {
+  var regex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})');
+  return regex.test(password);
+};
+
+var showError = function showError(input, message) {
+  var formField = input.parentElement;
+  formField.classList.remove('success');
+  formField.classList.add('error');
+  var error = formField.querySelector('p');
+  error.textContent = message;
+  error.classList.add('show');
+};
+
+var showSuccess = function showSuccess(input) {
+  var formField = input.parentElement;
+  formField.classList.remove('error');
+  formField.classList.add('success');
+  var error = formField.querySelector('p');
+  error.textContent = '';
+  error.classList.remove('show');
+};
+
 form.addEventListener('submit', function (e) {
-  var _iterator = _createForOfIteratorHelper(inputs),
-      _step;
+  var isValidFirstName = checkFirstName();
+  var isValidLastName = checkLastName();
+  var isValidEmail = checkEmail();
+  var isValidPassword = checkPassword();
+  var isValidForm = isValidFirstName && isValidLastName && isValidEmail && isValidPassword;
 
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var input = _step.value;
-
-      if (input.value) {
-        var regexMatch = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value);
-
-        if (!regexMatch) {
-          e.preventDefault();
-          email.nextElementSibling.classList.add('show');
-        }
-      } else {
-        e.preventDefault();
-        input.classList.add('trial__input-err');
-        input.nextElementSibling.classList.add('show');
-      }
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
+  if (!isValidForm) {
+    e.preventDefault();
   }
 });
+
+var debounce = function debounce(fn) {
+  var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+  var timeoutId;
+  return function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    timoutId = setTimeout(function () {
+      fn.apply(null, args);
+    }, delay);
+  };
+};
+
+form.addEventListener('input', debounce(function (e) {
+  switch (e.target.id) {
+    case 'firstName':
+      checkFirstName();
+      break;
+
+    case 'lastName':
+      checkLastName();
+      break;
+
+    case 'email':
+      checkEmail();
+      break;
+
+    case 'password':
+      checkPassword();
+      break;
+  }
+})); //old simple error script
+// const form = document.querySelector('.trial__form');
+// const inputs = document.querySelectorAll('.trial__input');
+// const email = document.querySelector('#email');
+// form.addEventListener('submit', e => {
+//   for (let input of inputs) {
+//     if (input.value) {
+//       const regexMatch = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+//         email.value
+//       );
+//       if (!regexMatch) {
+//         e.preventDefault();
+//         email.nextElementSibling.classList.add('show');
+//         email.nextElementSibling.nextElementSibling.classList.add('show');
+//       }
+//     } else {
+//       e.preventDefault();
+//       input.classList.add('trial__input-err');
+//       input.nextElementSibling.classList.add('show');
+//       input.nextElementSibling.nextElementSibling.classList.add('show');
+//     }
+//   }
+// });
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -183,7 +315,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53376" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56875" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

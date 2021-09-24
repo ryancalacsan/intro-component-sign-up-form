@@ -25,18 +25,26 @@
           <span class="bold">Try it free 7 days</span> then $20/mo. thereafter
         </h2>
         <form class="trial__form" novalidate="">
-          <input class="trial__input" type="text" name="firstName" id="firstName" placeholder="First Name" required="">
-          <p class="trial__err trial_err-firstName">
-            First Name cannot be empty
-          </p>
-          <input class="trial__input" type="text" name="lastName" id="lastName" placeholder="Last Name" required="">
-          <p class="trial__err trial_err-lastName">Last Name cannot be empty</p>
-          <input class="trial__input" type="email" name="email" id="email" placeholder="Email Address" required="">
-          <p class="trial__err trial_err-email">
-            Looks like this is not an email
-          </p>
-          <input class="trial__input" type="password" name="password" id="password" placeholder="Password" required="">
-          <p class="trial__err trial__err-password">Password cannot be empty</p>
+          <div class="trial__input-container trial__input-container-firstName">
+            <input class="trial__input" type="text" name="firstName" id="firstName" placeholder="First Name" required="">
+            <p class="trial__err trial_err-firstName"></p>
+            <img src="/icon-error.7540ea9a.svg" alt="" class="trial__err-icon">
+          </div>
+          <div class="trial__input-container">
+            <input class="trial__input" type="text" name="lastName" id="lastName" placeholder="Last Name" required="">
+            <p class="trial__err trial_err-lastName"></p>
+            <img src="/icon-error.7540ea9a.svg" alt="" class="trial__err-icon">
+          </div>
+          <div class="trial__input-container">
+            <input class="trial__input" type="email" name="email" id="email" placeholder="Email Address" required="">
+            <p class="trial__err trial_err-email"></p>
+            <img src="/icon-error.7540ea9a.svg" alt="" class="trial__err-icon">
+          </div>
+          <div class="trial__input-container">
+            <input class="trial__input" type="password" name="password" id="password" placeholder="Password" required="">
+            <p class="trial__err trial__err-password"></p>
+            <img src="/icon-error.7540ea9a.svg" alt="" class="trial__err-icon">
+          </div>
           <button class="trial__btn" type="submit">
             Claim your free trial
           </button>
